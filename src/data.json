@@ -1,17 +1,32 @@
 [
     {
-      "tech_use_case": "VR Travel",
+      "name": "VR Travel",
+      "xaxis": 600,
+      "yaxis": 500  
+    },
+    {
+      "name": "Print anything",
+      "xaxis": 300,
+      "yaxis": 100  
+    },
+    {
+      "name": "Cash-free society",
+      "xaxis": 900,
+      "yaxis": 400  
+    },
+    {
+      "name": "Generate human-like text",
+      "xaxis": 1200,
+      "yaxis": 200  
+    },
+    {
+      "name": "Metaverse marketing",
+      "xaxis": 700,
+      "yaxis": 400  
+    },
+    {
+      "name": "Detect anomalies",
       "xaxis": 900,
       "yaxis": 300  
-    },
-    {
-      "tech_use_case": "Print anything",
-      "xaxis": 600,
-      "yaxis": 600  
-    },
-    {
-      "tech_use_case": "Cash-free society",
-      "xaxis": 500,
-      "yaxis": 900  
     }
 ]

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as d3 from "d3";
 import * as fcAxis from '@d3fc/d3fc-axis';
 import * as fcAnnotation from '@d3fc/d3fc-annotation';
-import data from '../data.json';
+import data from '../more-data.json';
 
 const maxDesktopWidth = 1400;
 const viewHeight = 800;
@@ -13,11 +13,9 @@ const height = viewHeight - margin.top - margin.bottom;
 const feasibility = ['Commodotised', 'Pioneering', 'Gaining Momentum', 'In the Lab'];
 const viability = ['Star Building', 'Stars Align', 'Star Gazing'];
 const paddingFromAxis = 30;
-
-// how many px the nodes must be separated 
 const repulsionForce = 50;
 
-const StepThree = () => {
+const StepFour = () => {
   const [ universe, setUniverse ] = useState([]);
   const clearOldGraphs = () => {
     const svg = d3.select('#graph')
@@ -106,36 +104,47 @@ const StepThree = () => {
   }
 
   const dataVisualisation = () => {
-    d3.forceSimulation(universe)
-        .force("collision", d3.forceCollide(50)) // Repulsion force
-        .force("x_force", d3.forceX(d => d.xaxis)) // Each point attacted to its center x and y
-        .force("y_force", d3.forceY(d => d.yaxis))
-        .on('tick', ticked); // Redraws scatterplot at every simulation "tick"
+    const simulation = 
+        d3.forceSimulation(universe)
+            .force("collision", d3.forceCollide(50)) // Repulsion force
+            .force("x_force", d3.forceX(d => d.xaxis)) // Each point attacted to its center x and y
+            .force("y_force", d3.forceY(d => d.yaxis))
+            .on('tick', ticked); // Redraws scatterplot at every simulation "tick"
 
 
-function ticked() {
-    var container = d3.select('#circle-container')
-    var groups = container.selectAll('g')
-        .data(universe)
+    function ticked() {
+        var container = d3.select('#circle-container')
+        var groups = container.selectAll('g')
+            .data(universe)
 
-    var enterSelection = groups.enter().append('g')
-    enterSelection.append('path',)
-        .attr('d', 'M0 57.744V30.256a16 16 0 0 1 8.024-13.87l24-13.8a16 16 0 0 1 15.951 0l24 13.8A16 16 0 0 1 80 30.256v27.488a16 16 0 0 1-8.025 13.87l-24 13.8a16 16 0 0 1-15.95 0l-24-13.8A16 16 0 0 1 0 57.744Z')
-        .attr("id", function (d) { return `${d.id}-hex`; })
-        .attr("class", "node-hexagon")
-        .attr("fill", "pink")
-        .attr("x", d => d.x)
-        .attr("y", d => d.y)
-        .attr("width", 80)
-        .attr("height", 88);
+        var enterSelection = groups.enter().append('g')
+        enterSelection.append('path',)
+            .attr('d', 'M0 57.744V30.256a16 16 0 0 1 8.024-13.87l24-13.8a16 16 0 0 1 15.951 0l24 13.8A16 16 0 0 1 80 30.256v27.488a16 16 0 0 1-8.025 13.87l-24 13.8a16 16 0 0 1-15.95 0l-24-13.8A16 16 0 0 1 0 57.744Z')
+            .attr("id", function (d) { return `${d.id}-hex`; })
+            .attr("class", "node-hexagon")
+            .attr("fill", "pink")
+            .attr("transform", function(d) {
+              return `translate(-40,-44)`
+            })
+            .attr("x", d => d.x)
+            .attr("y", d => d.y)
+            .attr("width", 80)
+            .attr("height", 88);
+          enterSelection.append("text")
+            .attr("id", function (d) { return `${d.id}-label`; })
+            .attr("class", "node-text-label")
+            .attr("font-size", "12px")
+            .attr("fill", "black")
+            .attr("font-family", 'DM Sans')
+            .text(function(d){ return `${d.name}`;})
+            .attr("text-anchor", "middle");
 
-    groups.attr("id", function (d) { return `${d.id}-g` })
-        .attr("transform", function(d) {
-          return `translate(${d.x},${d.y})`
-        });
-
-    }
+        groups.attr("id", function (d) { return `${d.id}-g` })
+            .attr("transform", function(d) {
+              return `translate(${d.x},${d.y})`
+            });     
   }
+}
 
   useEffect(() => {
     setUniverse(data);
@@ -148,12 +157,12 @@ function ticked() {
 
   return (
     <>
-        <h2>Step three.</h2>
-        <h1>Add data</h1>
-        <Link to="/step-four">Next step</Link>
+        <h2>Step four.</h2>
+        <h1>Arranging the data</h1>
+        <Link to="/">Back to start</Link>
         <div id="graph"></div> 
     </>
   );
 }
 
-export default StepThree;
+export default StepFour;

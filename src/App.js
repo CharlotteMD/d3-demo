@@ -4,6 +4,8 @@ import './App.css';
 import StepOne from './containers/stepOne';
 import StepTwo from './containers/stepTwo';
 import Home from './containers/home';
+import StepThree from './containers/stepThree';
+import StepFour from './containers/stepFour';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Routes>
             <Route path="/step-one" element={<StepOne/>}/>
             <Route path="/step-two" element={<StepTwo/>}/>
+            <Route path="/step-three" element={<StepThree/>}/>
+            <Route path="/step-four" element={<StepFour/>}/>
             <Route path="/" element={<Home/>}/>
           </Routes>
       </Router>
