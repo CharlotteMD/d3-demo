@@ -1,0 +1,17 @@
+[
+    {
+      "tech_use_case": "VR Travel",
+      "xaxis": 900,
+      "yaxis": 300  
+    },
+    {
+      "tech_use_case": "Print anything",
+      "xaxis": 600,
+      "yaxis": 600  
+    },
+    {
+      "tech_use_case": "Cash-free society",
+      "xaxis": 500,
+      "yaxis": 900  
+    }
+]
