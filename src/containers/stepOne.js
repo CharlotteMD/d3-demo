@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import * as d3 from "d3";
 import * as fcAxis from '@d3fc/d3fc-axis';
 import * as fcAnnotation from '@d3fc/d3fc-annotation';
@@ -85,6 +86,7 @@ const StepOne = () => {
     <>
         <h2>Step one.</h2>
         <h1>Draw a blank graph</h1>
+        <Link to="/step-two">Next step</Link>
         <div id="graph"></div> 
     </>
   );
